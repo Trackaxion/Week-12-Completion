@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     public GameObject coin;
     private int score;
 
+    // Added by Isaiah Lopez
+    private int lives;
+    public TextMeshProUGUI livesText;
+
     public TextMeshProUGUI scoreText;
 
     // Start is called before the first frame update
@@ -26,6 +30,10 @@ public class GameManager : MonoBehaviour
         CreateSky();
         score = 0;
         scoreText.text = "Score: " + score;
+
+        // Added by Isaiah Lopez
+        lives = 3;
+        livesText.text = "Lives: " + lives;
     }
 
     // Update is called once per frame
@@ -58,5 +66,12 @@ public class GameManager : MonoBehaviour
     {
         
         Instantiate(coin, new Vector3(Random.Range(-9f, 9f), 7.5f, 0), Quaternion.identity);
+    }
+
+    // Added by Isaiah Lopez
+    public void LoseLife(int howMuch)
+    {
+        lives = lives - howMuch;
+        livesText.text = "Lives: " + lives;
     }
 }
