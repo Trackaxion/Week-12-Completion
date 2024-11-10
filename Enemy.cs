@@ -23,6 +23,9 @@ public class Enemy : MonoBehaviour
     {
         if (whatDidIHit.tag == "Player")
         {
+            // Added by Isaiah Lopez
+            GameObject.Find("GameManager").GetComponent<GameManager>().LoseLife(1);
+            
             GameObject.Find("Player(Clone)").GetComponent<Player>().LoseALife();
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
